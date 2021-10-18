@@ -2,6 +2,11 @@ package com.volvadvit.sort.Merge;
 
 import java.util.Arrays;
 
+/** Сортировка слиянием.
+ *  Укороченная версия:
+ *  int i=0, j=0, k=0;
+ *  a3[k++] = a1[i] < a2[j] ? a1[i++] : a2 [j++]
+ */
 public class Merge {
 
     public static void main(String[] args) {
