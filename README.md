@@ -1,4 +1,3 @@
-# Algorithms
 Examples of algorithm implementations on **Java**:
 
 ### Search
