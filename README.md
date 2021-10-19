@@ -15,6 +15,6 @@ Examples of algorithm implementations on **Java**:
  - Radix (LSD)
  - Quick
 
-### Dynamic programming
- - Task aboug backpack capacity
+### Other
+ - Dynamic programming (Knapsack problem)
  - K-nearest neighbors
