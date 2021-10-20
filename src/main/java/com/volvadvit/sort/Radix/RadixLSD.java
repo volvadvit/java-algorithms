@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**     LSD Radix sort.
- *      (num % mod) / div;
+/** LSD Поразрядная сортировка.
  *
- * 		xx1 = (input % 10) / 1;
- * 		x1x = (input % 100) / 10;
- * 		1xx = (input % 1000) / 100;
+ *  Время - O((n + b) * d). Доп.память - O(n*b)
+ *  где b - in base (система счисления), k - max value in collection, d = (logb(k) + 1) - radix count.
+ *
+ *  Считается неустойчивой.
+ *
+ *  (num % mod) / div;
+ * 	xx1 = (input % 10) / 1;
+ * 	x1x = (input % 100) / 10;
+ * 	1xx = (input % 1000) / 100;
  */
 public class RadixLSD {
 

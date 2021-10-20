@@ -1,5 +1,14 @@
 package com.volvadvit.search.Dijkstra;
 
+/**
+ * Алгоритм поиска Дейкстры.
+ *
+ * Время - O(n^2 + m),
+ * где  n - кол-во вершин, m - кол-во ребер.
+ *
+ * В данном примере используется ориентированный граф,
+ * и связи в connect - добавляются в одну сторону.
+ */
 public class Dijkstra {
 
     public static void main(String[] args) {
@@ -28,7 +37,7 @@ public class Dijkstra {
         graph.connectParentToChildren(b, c, 2.0);
         graph.connectParentToChildren(c, end, 1.0);
 
-        graph.findLowestCostWay(start);
+        graph.findLowestCostWay();
         graph.showResult();
     }
 }

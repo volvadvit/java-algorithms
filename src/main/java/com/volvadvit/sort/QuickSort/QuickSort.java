@@ -2,6 +2,11 @@ package com.volvadvit.sort.QuickSort;
 
 import java.util.Arrays;
 
+/** Быстрая сортирвока.
+ *
+ * В лучшем, среднем случае - O(n * log(n)). В худшем - O(n^2).
+ * Не устойчива (при доп. памяти O(n) можно сделать устойчивой).
+ */
 public class QuickSort {
 
     public static void main(String[] args) {

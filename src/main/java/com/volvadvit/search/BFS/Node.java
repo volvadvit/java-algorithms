@@ -17,5 +17,6 @@ public class Node {
 
     void connect(Node neighbor) {
         this.neighbours.add(neighbor);
+        neighbor.neighbours.add(this);
     }
 }

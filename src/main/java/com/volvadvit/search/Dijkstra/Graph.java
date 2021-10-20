@@ -23,14 +23,18 @@ public class Graph {
         nodeToLowestCost.put(child, Double.POSITIVE_INFINITY);
     }
 
-    void findLowestCostWay(Node root) {
+    void findLowestCostWay() {
+        findLowestCostWayRecursion(start);
+    }
+
+    private void findLowestCostWayRecursion(Node root) {
         root.children.forEach((child, cost) -> {
             Double currentCost = nodeToLowestCost.get(child);
             Double childCost = nodeToLowestCost.get(root) + cost;
             if (currentCost > childCost) {
                 nodeToLowestCost.put(child, childCost);
             }
-            findLowestCostWay(child);
+            findLowestCostWayRecursion(child);
         });
     }
 

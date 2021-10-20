@@ -3,6 +3,11 @@ package com.volvadvit.sort.Merge;
 import java.util.Arrays;
 
 /** Сортировка слиянием.
+ *
+ * Время - O(n * log(n)). Доп. память - O(n).
+ *
+ * Считается устойчивой.
+ *
  *  Укороченная версия:
  *  int i=0, j=0, k=0;
  *  a3[k++] = a1[i] < a2[j] ? a1[i++] : a2 [j++]
