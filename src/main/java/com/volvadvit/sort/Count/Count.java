@@ -7,7 +7,7 @@ import java.util.List;
 /** Сортировка подсчетом.
  *
  *  Время  - O(n + m), Память - O(n*m),
- *  где m - max value for collection.
+ *  где m - max value in collection.
  *
  *  Считается устойчивой.
  */
@@ -22,7 +22,7 @@ public class Count {
     }
 
     private static List<Integer> countSort(int[] unsorted, int max) {
-        // Fill count array
+        // Fill count's array
         int[] countArray = new int[max + 1];
         Arrays.fill(countArray, 0);
         for (int num : unsorted) {

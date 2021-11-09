@@ -10,7 +10,7 @@ import java.util.Arrays;
  *
  *  Укороченная версия:
  *  int i=0, j=0, k=0;
- *  a3[k++] = a1[i] < a2[j] ? a1[i++] : a2 [j++]
+ *  ar3[k++] = ar1[i] < ar2[j] ? ar1[i++] : ar2 [j++]
  */
 public class Merge {
 
@@ -21,6 +21,8 @@ public class Merge {
     }
 
     private static int[] sort(int[] input) {
+        // Делим начальный массив на парные подмассивы, с 1 элементом
+        // После чего складваем каждую пару, параллельно сортируя элементы
         if (input.length < 2) {
             return input;
         }
@@ -35,21 +37,25 @@ public class Merge {
     private static int[] merge(int[] right, int[] left) {
         int[] mergeArray = new int[right.length + left.length];
 
-        int positionA = 0, positionB = 0;
+        // Текущий индекс правого и левого подмассивов
+        int positionRight = 0, positionLeft = 0;
 
         for (int i = 0; i < mergeArray.length; i++) {
-            if (positionA == right.length) {
-                mergeArray[i] = left[positionB];
-                positionB++;
-            } else if (positionB == left.length) {
-                mergeArray[i] = right[positionA];
-                positionA++;
-            } else if (right[positionA] < left[positionB]) {
-                mergeArray[i] = right[positionA];
-                positionA++;
+            if (positionRight == right.length) {
+                // Если из правого подмассива выбраны уже все элементы
+                mergeArray[i] = left[positionLeft];
+                positionLeft++;
+            } else if (positionLeft == left.length) {
+                // Если из левого подмассива выбраны уже все элементы
+                mergeArray[i] = right[positionRight];
+                positionRight++;
+            } else if (right[positionRight] < left[positionLeft]) {
+                // Сортировка по возрастанию
+                mergeArray[i] = right[positionRight];
+                positionRight++;
             } else {
-                mergeArray[i] = left[positionB];
-                positionB++;
+                mergeArray[i] = left[positionLeft];
+                positionLeft++;
             }
         }
         return mergeArray;

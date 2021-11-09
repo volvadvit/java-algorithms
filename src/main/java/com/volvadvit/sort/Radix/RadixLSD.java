@@ -36,7 +36,7 @@ public class RadixLSD {
         // Sort
         for (int i = 0; i < maxNumberLength; i++) {
 
-            List<List<Integer>> buckets = createBucketsList(10); // Temp list 10xN. For numbers 0..9
+            List<List<Integer>> buckets = createBucketsList(10); // Temp list 10xN. For digits 0..9
 
             for (Integer num : resultList) {
                 int radix = (num % mod) / div;

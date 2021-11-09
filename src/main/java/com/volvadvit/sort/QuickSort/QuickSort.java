@@ -15,12 +15,12 @@ public class QuickSort {
         System.err.println(Arrays.toString(unsorted));
     }
 
-    private static void quickSort(int[] input, int low, int high) {
-        if (input.length != 0 && low < high) {
+    private static void quickSort(int[] input, int inputIndexStart, int inputIndexEnd) {
+        if (input.length != 0 && inputIndexStart < inputIndexEnd) {
 
-            int prop = input[(low + high) / 2];
-            int left = low;
-            int right = high;
+            int prop = input[(inputIndexStart + inputIndexEnd) / 2]; // Опорный элемент
+            int left = inputIndexStart;
+            int right = inputIndexEnd;
 
             while (left < right) {
                 while (input[left] < prop) {
@@ -36,8 +36,8 @@ public class QuickSort {
                 right--;
             }
             // left, right == prop
-            if (low < right) { quickSort(input, low, right); }
-            if (high > left) { quickSort(input, left, high); }
+            if (inputIndexStart < right) { quickSort(input, inputIndexStart, right); }
+            if (inputIndexEnd > left) { quickSort(input, left, inputIndexEnd); }
         }
     }
 

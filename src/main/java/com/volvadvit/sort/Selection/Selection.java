@@ -7,9 +7,9 @@ import java.util.Arrays;
  *  Время O(n^2),
  *  Считается неустойчивой.
  *
- * Ищется минимальный (максимальный) элемент в неотсортированном подмассиве,
- * и вставляется в конец (начало) отсортированного подмассива,
- * в начало (конец) массива.
+ * Ищется минимальный элемент в неотсортированном подмассиве,
+ * и вставляется в конец отсортированного подмассива,
+ * точнее в начало изначального массива.
  */
 public class Selection {
 
@@ -20,6 +20,7 @@ public class Selection {
 
     private static int[] selectionSort(int[] input) {
         for (int i = 0; i < input.length - 1; i++) {
+
             int minValueIndex = i;
 
             // search minValue in unsorted sub-array

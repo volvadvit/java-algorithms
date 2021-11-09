@@ -18,6 +18,9 @@ public class BubbleOpt {
         // for 25 numbers - 16 iterations, because some of them are already sorted.
         int[] unsorted = {22, 17, 1, 2, 11, 6, 21, 18, 23, 3, 14, 15, 24, 5, 9, 10, 19, 4, 20, 7, 12, 13, 8, 25};
         System.err.println(Arrays.toString(bubbleSort(unsorted)));
+        // 1 iterations for already sorted array
+        unsorted = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+        System.err.println(Arrays.toString(bubbleSort(unsorted)));
     }
 
     private static int[] bubbleSort(int[] input) {
@@ -27,7 +30,7 @@ public class BubbleOpt {
             wasSwapped = false;
             iterations++;
 
-            for (int j = 0; j < input.length - 1 - iterations; j++) {
+            for (int j = 0; j < input.length - iterations; j++) {
                 if (input[j] > input[j+1]) {
                     swap(input, j, j + 1);
                     wasSwapped = true;
