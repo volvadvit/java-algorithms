@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 /** Сортировка слиянием.
  *
+ * Делим начальный массив на парные подмассивы, с 1 элементом
+ * После чего складваем каждую пару, параллельно сортируя элементы
+ *
  * Время - O(n * log(n)). Доп. память - O(n).
  *
  * Считается устойчивой.
@@ -11,6 +14,9 @@ import java.util.Arrays;
  *  Укороченная версия:
  *  int i=0, j=0, k=0;
  *  ar3[k++] = ar1[i] < ar2[j] ? ar1[i++] : ar2 [j++]
+ *
+ *  Application: Large lists, best to sort linked list.
+ *  More efficient than quick sort at handling slow-to-access sequential media such as disk storage or network-attached storage.
  */
 public class Merge {
 
@@ -20,12 +26,13 @@ public class Merge {
         System.err.println(Arrays.toString(result));
     }
 
+    // Рекурсионный метод
     private static int[] sort(int[] input) {
-        // Делим начальный массив на парные подмассивы, с 1 элементом
-        // После чего складваем каждую пару, параллельно сортируя элементы
+        // Выход из рекурсии
         if (input.length < 2) {
             return input;
         }
+
         int[] rightHalf = Arrays.copyOfRange(input, 0, input.length/2);
         int[] leftHalf = Arrays.copyOfRange(input, input.length/2, input.length);
 
@@ -36,13 +43,14 @@ public class Merge {
 
     private static int[] merge(int[] right, int[] left) {
         int[] mergeArray = new int[right.length + left.length];
-
         // Текущий индекс правого и левого подмассивов
         int positionRight = 0, positionLeft = 0;
 
         for (int i = 0; i < mergeArray.length; i++) {
             if (positionRight == right.length) {
                 // Если из правого подмассива выбраны уже все элементы
+                // Просто добавляем поочередно элементы из другого подмассива
+                // Так как они уже отсортированы
                 mergeArray[i] = left[positionLeft];
                 positionLeft++;
             } else if (positionLeft == left.length) {

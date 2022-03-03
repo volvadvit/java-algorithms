@@ -6,8 +6,10 @@ import java.util.List;
 
 /** LSD Поразрядная сортировка.
  *
- *  Время - O((n + b) * d). Доп.память - O(n*b)
- *  где b - in base (система счисления), k - max value in collection, d = (logb(k) + 1) - radix count.
+ *  Время : Worst – O(n * b), Best – O(n).
+ *  Доп.память - O(n + b)
+ *
+ *  где b - in base (система счисления).
  *
  *  Считается неустойчивой.
  *
@@ -16,7 +18,10 @@ import java.util.List;
  * 	x1x = (input % 100) / 10;
  * 	1xx = (input % 1000) / 100;
  */
+
 public class RadixLSD {
+
+    private static final int rang = 10; // For digits 0..9
 
     public static void main(String[] args) {
         List<Integer> unsorted = List.of(
@@ -25,7 +30,7 @@ public class RadixLSD {
     }
 
     private static List<Integer> radixSort(List<Integer> input) {
-        // Set up
+        // Количетсво разрядов у самого большого числа
         int maxNumberLength = Collections.max(input).toString().toCharArray().length;
         List<Integer> resultList = new ArrayList<>(input.size());
         resultList.addAll(List.copyOf(input));
@@ -35,8 +40,7 @@ public class RadixLSD {
 
         // Sort
         for (int i = 0; i < maxNumberLength; i++) {
-
-            List<List<Integer>> buckets = createBucketsList(10); // Temp list 10xN. For digits 0..9
+            List<List<Integer>> buckets = createBucketsList(rang); // Temp list 10xN
 
             for (Integer num : resultList) {
                 int radix = (num % mod) / div;

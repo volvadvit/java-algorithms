@@ -5,7 +5,12 @@ import java.util.Arrays;
 /** Быстрая сортирвока.
  *
  * В лучшем, среднем случае - O(n * log(n)). В худшем - O(n^2).
+ * Память - O(log(n)).
  * Не устойчива (при доп. памяти O(n) можно сделать устойчивой).
+ *
+ * Application: Large lists, best when pivot divide in 2 equal halves.
+ *            Not efficient for linked lists (poor pivot choice because of no random access).
+ *           Generally outperform merge sort for sorting RAM-based arrays.
  */
 public class QuickSort {
 
@@ -18,15 +23,20 @@ public class QuickSort {
     private static void quickSort(int[] input, int inputIndexStart, int inputIndexEnd) {
         if (input.length != 0 && inputIndexStart < inputIndexEnd) {
 
-            int prop = input[(inputIndexStart + inputIndexEnd) / 2]; // Опорный элемент
+            // Выбирается опорный элемент, относительно которого будут делиться два подмассива
+            // Обычно это середина входного массива
+            int mid = input[(inputIndexStart + inputIndexEnd) / 2];
+            // Выставляются два флага с концов массива,
+            // которые будут двигаться навстречу друг другу, до опорного элемента
             int left = inputIndexStart;
             int right = inputIndexEnd;
 
             while (left < right) {
-                while (input[left] < prop) {
+                // Сортируем относительно опорного элемента
+                while (input[left] < mid) {
                     left++;
                 }
-                while (input[right] > prop) {
+                while (input[right] > mid) {
                     right--;
                 }
                 if (left < right) {
@@ -35,7 +45,8 @@ public class QuickSort {
                 left++;
                 right--;
             }
-            // left, right == prop
+            // left, right == mid
+            // Сортируем каждый подмассив внутри себя
             if (inputIndexStart < right) { quickSort(input, inputIndexStart, right); }
             if (inputIndexEnd > left) { quickSort(input, left, inputIndexEnd); }
         }

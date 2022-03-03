@@ -4,12 +4,16 @@ import java.util.Arrays;
 
 /** Сортировка Вставкой.
  *
- *  *  Время O(n^2),
- *  *  Считается устойчивой.
+ *  Время O(n^2) - среднем/худшем, в лучшем O(n),
+ *
+ *  Считается устойчивой.
  *
  * Вместо создания нового отсортированного массива,
  * значения будут хранится в отсортированном подмассиве в начале массива.
  * Берется любой элемент и вставляется на нужное место в подмассив.
+ *
+ * Application: Small lists and limited memory, best with already sorted array or close-to-sorted array.
+ *              Practically more efficient comparing to bubble sort and selection sort.
  */
 public class Insertion {
 
@@ -25,11 +29,12 @@ public class Insertion {
             int current = input[i];
 
             // Ищется место в отсортированном подмассиве
-            for (int j = 0; j < i; j++) {
-                if (input[j] > current) {
-                    swap(input, i, j);
-                }
+            int j = i - 1;
+            while (j >= 0 && current < input[j]) {
+                input[j+1] = input[j];
+                j--;
             }
+            input[j+1] = current;
         }
         return input;
     }

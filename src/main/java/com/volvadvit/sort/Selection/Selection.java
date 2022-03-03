@@ -10,6 +10,8 @@ import java.util.Arrays;
  * Ищется минимальный элемент в неотсортированном подмассиве,
  * и вставляется в конец отсортированного подмассива,
  * точнее в начало изначального массива.
+ *
+ * Application: Small lists and limited memory
  */
 public class Selection {
 

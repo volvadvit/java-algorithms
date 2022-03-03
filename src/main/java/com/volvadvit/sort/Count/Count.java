@@ -6,10 +6,15 @@ import java.util.List;
 
 /** Сортировка подсчетом.
  *
- *  Время  - O(n + m), Память - O(n*m),
+ *  Время  - O(n + m), Память - O(n + m),
  *  где m - max value in collection.
  *
+ *  Создается массив от 0 до m, где в каждый индекс записывается,
+ *  сколько раз в изначальном массиве встречается схожее с индексом число.
+ *
  *  Считается устойчивой.
+ *
+ *  Application: В ситуациях, когда различия в разнообразии ключевых значений не значительно превосходит количество элементов.
  */
 public class Count {
 
@@ -18,6 +23,7 @@ public class Count {
         int[] unsorted = createStartArrayWithLength(50);
         int maxValue = getMaxFromArray(unsorted);
 
+        System.err.println("Array = " + Arrays.toString(unsorted) + "\n Max value = " + maxValue);
         System.err.println(countSort(unsorted, maxValue));
     }
 
@@ -48,6 +54,7 @@ public class Count {
         }
         return max;
     }
+
     private static int[] createStartArrayWithLength(int length) {
         int[] ar = new int[length];
         for (int i = 0; i < length; i++) {
